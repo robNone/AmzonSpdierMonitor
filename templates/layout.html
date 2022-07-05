@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <title>{% block title %}{% endblock %}</title>
+    {#
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}" /> #} {#
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-theme.css') }}" /> #}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Init.css') }}">
+    <script src="{{ url_for('static', filename='js/xlsx.full.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> {% block head %}{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container body-content">
+        {% block body %}{% endblock %}
+    </div>
+
+    <div class="container footer">
+        <hr>
+
+        <!--PageEndHtml Block Begin-->
+        <div class="cnblogs_Highlighter">
+            <div style="text-align:left; margin:0 17px; ling-height:24px;">
+                <p style="color:#2a6496; padding:15px;"><i class="fa fa-pencil fa-5x fa-spin"></i></p>
+                <!--<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"1","bdPos":"right","bdTop":"120"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>-->
+            </div>
+        </div>
+
+        {#
+        <script src="{{ url_for('static',filename='js/jquery.js') }}"></script> #} {#
+        <script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script> #}
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <title>Search results</title>
+    <script src="https://code.highcharts.com.cn/jquery/jquery-1.8.3.min.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://cdn.highcharts.com.cn/highcharts/themes/grid-light.js"></script>
+    <style type="text/css">
+    </style>
+
+</head>
+
+<body>
+    <b></b>
+
+    <div id="container" style="min-width:400px;height:400px"></div>
+    <script>
+        var chart = null;
+        Xdat = []
+        var D;
+
+        function todate(date) {
+            console.log(date)
+            return new Date(parseInt(date) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ')
+        }
+        $.getJSON('http://192.168.4.128:5000/FindAsin?asin=B08X3BZGWH', function (data) {
+
+            D = data
+            Currently_unavailableist = []
+            NoBuybox = []
+            data.forEach(
+                function (asinItem) {
+                    if (asinItem['us'] == "无库存") {
+                        Currently_unavailableist.push([asinItem['dTime'] * 1000, 0])
+                    } else if (asinItem['us'] == "NoBuybox") {
+                        NoBuybox.push([asinItem['dTime'] * 1000, asinItem['price']])
+                    } else {
+                        Xdat.push([asinItem['dTime'] * 1000, asinItem['price']])
+                    }
+                }
+            )
+
+            chart = Highcharts.chart('container', {
+                chart: {
+                    type: 'scatter',
+                    zoomType: 'x'
+                },
+                title: {
+                    text: 'asin'
+                },
+                subtitle: {
+                    text: document.ontouchstart === undefined ?
+                        '鼠标拖动可以进行缩放' : '手势操作进行缩放'
+                },
+
+                tooltip: {
+                    xDateFormat: '%a %b %d %H:%M:%S %Y',
+                    shared: true
+                },
+                xAxis: {
+                    type: 'datetime',
+                    dateTimeLabelFormats: {
+                        millisecond: '%a %b %d %H:%M:%S %Y',
+                        second: '%H:%M:%S',
+                        minute: '%H:%M',
+                        hour: '%H:%M',
+                        day: '%m-%d',
+                        week: '%m-%d',
+                        month: '%Y-%m',
+                        year: '%Y'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: '价格'
+                    }
+
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    scatter: {
+                        tooltip: {
+                            xDateFormat: '%a %b %d %H:%M:%S %Y',
+                            shared: true
+                        },
+
+                    }
+
+                },
+                series: [
+                    {
+                        //type: 'scatter',
+                        name: 'Currently_unavailable',
+                        data: Currently_unavailableist,
+                        tooltip: {
+                            //headerFormat:'<b>{series.name}</b><br>',
+
+                        },
+                        marker: {
+                            // radius: 4
+                        }
+                    },
+                    {
+                        //type: 'scatter',
+                        name: 'NoBuybox',
+                        data: NoBuybox,
+                        tooltip: {
+                            //headerFormat:'<b>{series.name}</b><br>',
+                            //pointFormat: '{point.x}'
+                        },
+                        marker: {
+                            //  radius: 4
+                        }
+                    },
+               
+                    {
+                        type: 'line',
+                        name: 'asin_price',
+                        data: Xdat
+                    }
+
+                ]
+            });
+        });
+    </script>
+
+</body>
+
+</html>
