@@ -16,6 +16,7 @@ def Add_Asin_dao(asin_list,asin_type):
 def count_Asin_dao():
 	sqlstr='select count(*)from ASINS '
 	try:
+		#2
 		return	(sqlite().select(sqlstr))
 	except Exception as es :pass
 	return '1' 
