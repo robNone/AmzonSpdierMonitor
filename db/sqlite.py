@@ -4,7 +4,8 @@ import sqlite3 ,sys
 class sqlite(object):
 	def __init__(self):
 		# self.dbName = '/root/search/File/asin.db'
-		self.dbName = 'G:/search/File/asin.db'
+		self.dbName = '/root/DB/asin.db'
+		# self.dbName = 'G:/search/File/asin.db'
 		self.comm=None
 		self.cursor = None
 	def dbClose(self):
