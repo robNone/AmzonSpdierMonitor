@@ -38,6 +38,8 @@ def Remove_Asin_dao(asin_list):
 		except Exception as es :pass
 	return count_Asin_dao()
 
+
+
 def find_Asin_dao(asin):
 	sqlstr='select*from asinTable where asin="'+asin+'"  and asinType='
 	return	parse_ret.parse_Asins(sqlite().select(sqlstr))

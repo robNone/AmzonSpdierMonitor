@@ -135,7 +135,7 @@
         var asinStr = document.getElementsByClassName("form-control").AsinText.value;
         $.ajax({
                 type: "post",
-                url: "/GetAsinByStr",
+                url: "/FindAsin",
                 dataType: "json",
                 data: {
                     "asins": asinStr
@@ -176,7 +176,8 @@
                 "asin_type":asin_type
             },
 
-            success: function(qwe) {
+            success: 
+            (qwe) {
 
                    alert(qwe);
             },
@@ -188,5 +189,7 @@
 </script>
 <script src="{{ url_for('static', filename='js/table.js') }}"></script>
 <script src="{{ url_for('static', filename='js/toXls.js') }}"></script>
+<script src="{{ url_for('static', filename='js/TestVe.js') }}"></script>
+
 
 {% endblock %}
