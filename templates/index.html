@@ -98,9 +98,30 @@
 
 
 </div>
-</div>
+    <div>
+
+        <form id="msgForm" method="post" enctype="multipart/form-data" class="layui-form" style="width:250px ;text-align:center">
+            <div class="layui-upload-drag" id="importView" ,style="text-align:center">
+                 <input type="file" name="file" onchange="getfilename(this);" class="form-control input-sm replyField"/>
+                 <!-- 文件通过校验后，服务器会返回文件名，赋给returnFileName，可以不用再二次上传文件 -->
+                 <input type="hidden" id="returnFileName" name="returnFileName" >
+             </div>
+             <!-- 预览区域 -->
+             <div class=" top ">
+                <button type="button" id="checkBtn" onclick="PDFile()" class="layui-btn  layui-btn-sm">上传</button>
+            </div>
+
+         </form>
+
+      
+        </div>
+
+    </div>
 
 <script type="text/javascript">
+
+    let fileData={}//全局变量
+ 
     var s = "";
     var filexlsx;
     {/* document.querySelector("#file").addEventListener("change", 
@@ -175,7 +196,7 @@
                 "asin_type":asin_type
             },
 
-            success: 
+            success: function
             (qwe) {
 
                    alert(qwe);
@@ -188,7 +209,6 @@
 </script>
 <script src="{{ url_for('static', filename='js/table.js') }}"></script>
 <script src="{{ url_for('static', filename='js/toXls.js') }}"></script>
-<script src="{{ url_for('static', filename='js/TestVe.js') }}"></script>
 
 
 {% endblock %}
