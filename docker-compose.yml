@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  getoffers:
+    image: getoffers
+    build:
+      context: .
+      dockerfile: ./Dockerfile

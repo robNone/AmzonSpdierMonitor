@@ -1,0 +1,10 @@
+{
+    "python.pythonPath":"/usr/local/python38/bin/python3",
+    "getJsonPath":"/root/easybizFindAll/tools/getjson1.py",
+    "java":"java",
+    "cSpider_jar":"/root/cSpider/target/cSpider-1.0-SNAPSHOT-jar-with-dependencies.jar",
+    "keepaPath":"/root/cSpider/File/keepa/",
+    "Qx":"/root/cSpider/File/Qx/"
+
+
+}
